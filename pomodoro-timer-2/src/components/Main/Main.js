@@ -1,7 +1,7 @@
 import "./Main.css";
 
-import ButtonStartStop from "../Buttons/ButtonStartStop";
-import ButtonReset from "../Buttons/ButtonReset";
+import ButtonStartStop from "./Buttons/ButtonStartStop";
+import ButtonReset from "./Buttons/ButtonReset";
 
 const Main = ({stateMinutes, stateSeconds, setSeconds, stateMode, setMode, setSession, stateTimer, setTimer, setBreak, setMinutes}) => {
 
