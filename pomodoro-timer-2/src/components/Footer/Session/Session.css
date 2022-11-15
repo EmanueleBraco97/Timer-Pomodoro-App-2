@@ -1,0 +1,10 @@
+.session {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.session-setting {
+    display: flex;
+    gap: 10px;
+}
