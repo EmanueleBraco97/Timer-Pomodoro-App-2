@@ -23,7 +23,7 @@ const ButtonStop = ({stateTimer, setTimer}) => {
     return(
         <div>
             <button id="start_stop" onClick={startStop}>
-                {stateTimer ? <FontAwesomeIcon icon={faCircle} /> : <FontAwesomeIcon icon={faPlay} />}
+                {stateTimer ? <FontAwesomeIcon className="button" icon={faCircle} /> : <FontAwesomeIcon className="button" icon={faPlay} />}
             </button>
         </div>
     )

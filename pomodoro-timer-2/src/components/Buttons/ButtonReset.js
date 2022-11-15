@@ -17,7 +17,7 @@ const ButtonReset = ({setMode,setBreak,setSession,setMinutes,setSeconds,setTimer
 
   return (
     <button id="reset" onClick={reset}>
-      <FontAwesomeIcon icon={faRefresh} />
+      <FontAwesomeIcon className="button" icon={faRefresh} />
     </button>
   );
 };
