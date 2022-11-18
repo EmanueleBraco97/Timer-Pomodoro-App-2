@@ -8,62 +8,35 @@ import Footer from "./Footer/Footer";
 const Timer = () => {
   const [stateBreak, setBreak] = useState(5);
   const [stateSession, setSession] = useState(25);
-  const [stateMinutes, setMinutes] = useState(25);
-  const [stateSeconds, setSeconds] = useState(0);
-  const [stateTimer, setTimer] = useState(null);
+  const [stateTimer, setTimer] = useState(stateSession * 60);
   const [stateMode, setMode] = useState("Session");
 
   useEffect(() => {
-    if (stateTimer) {
-      let interval = setInterval(() => {
-        handleNumber();
-      }, 1000);
-      return () => {
-        clearInterval(interval);
-      };
-    }
-  });
+    function switchesTimerMode() {
+      const newMode = stateMode === "Session" ? "Break" : "Session";
+      const newTimer =
+        newMode === "Session" ? stateSession * 60 : stateBreak * 60;
 
-  function handleNumber() {
-    if (stateSeconds === 0) {
-      if (stateMinutes === 0) {
-        switchesTimerMode();
-      } else {
-        setSeconds(59);
-        setMinutes(stateMinutes - 1);
-      }
-    } else {
-      setSeconds(stateSeconds - 1);
+      setMode(newMode);
+      setTimer(newTimer);
     }
-  }
 
-  function switchesTimerMode() {
-    // eslint-disable-next-line no-unused-expressions
-    if (stateMode === "Session") {
-      setMode("Break");
-      setMinutes(stateBreak);
-      setSeconds(0);
-    } else {
-      setMode("Session");
-      setMinutes(stateSession);
-      setSeconds(0);
+    if (stateTimer === 0) {
+      switchesTimerMode();
     }
-  }
+  }, [stateBreak, stateMode, stateSession, stateTimer]);
 
   return (
     <div className="container">
       <Header />
       <Main
-        stateMinutes={stateMinutes}
-        stateSeconds={stateSeconds}
-        setSeconds={setSeconds}
         stateMode={stateMode}
         setMode={setMode}
         setSession={setSession}
         stateTimer={stateTimer}
         setTimer={setTimer}
+        stateSession={stateSession}
         setBreak={setBreak}
-        setMinutes={setMinutes}
       />
       <Footer
         stateTimer={stateTimer}
@@ -71,7 +44,7 @@ const Timer = () => {
         setBreak={setBreak}
         stateSession={stateSession}
         setSession={setSession}
-        setMinutes={setMinutes}
+        setTimer={setTimer}
       />
     </div>
   );

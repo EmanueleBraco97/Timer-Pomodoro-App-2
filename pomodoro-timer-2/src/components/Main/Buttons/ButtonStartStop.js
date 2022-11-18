@@ -2,31 +2,35 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlay, faCircle } from "@fortawesome/free-solid-svg-icons";
 
 import "./Button.css";
+import { useState } from "react";
 
-const ButtonStop = ({stateTimer, setTimer}) => {
+const ButtonStop = ({ setTimer, intervalId, setIntervalId }) => {
+  const [isPaused, setIsPaused] = useState(true);
 
-    function startStop() {
-        stateTimer ? stopTimer() : startTimer();
-      }
+  const clickPlay = () => {
+    setIsPaused(false);
 
-      function stopTimer() {
-        setTimer(null);
-        //setPeriodLength(null)
-      }
+    setIntervalId(
+      setInterval(() => {
+        setTimer((prevValue) => prevValue - 1);
+      }, 1000)
+    );
+  };
 
-      function startTimer() {
-        setTimer("Start");
-        //setPeriodLength(1000)
-      }
+  const clickPause = () => {
+    setIsPaused(true);
+    clearInterval(intervalId);
+  };
 
-
-    return(
-        <div>
-            <button id="start_stop" onClick={startStop}>
-                {stateTimer ? <FontAwesomeIcon className="button" icon={faCircle} /> : <FontAwesomeIcon className="button" icon={faPlay} />}
-            </button>
-        </div>
-    )
-}
+  return isPaused ? (
+    <button className="button-start" onClick={clickPlay} id="start">
+      <FontAwesomeIcon className="button" icon={faPlay} />
+    </button>
+  ) : (
+    <button className="button-pause" onClick={clickPause}>
+      <FontAwesomeIcon className="button" icon={faCircle} />
+    </button>
+  );
+};
 
 export default ButtonStop;

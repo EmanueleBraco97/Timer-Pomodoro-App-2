@@ -1,48 +1,53 @@
 import "./Main.css";
+import { useState } from "react";
 
 import ButtonStartStop from "./Buttons/ButtonStartStop";
 import ButtonReset from "./Buttons/ButtonReset";
+import TimerOutput from "./TimerOutput";
 
-const Main = ({stateMinutes, stateSeconds, setSeconds, stateMode, setMode, setSession, stateTimer, setTimer, setBreak, setMinutes}) => {
+const Main = ({
+  setSeconds,
+  stateMode,
+  setMode,
+  setSession,
+  stateTimer,
+  setTimer,
+  setBreak,
+  setMinutes,
+  stateSession,
+}) => {
+  const [intervalId, setIntervalId] = useState(0);
 
-    function TimerOutput({ time, mode }) {
-        return (
-          <div className="timer-output">
-            <div id="timer-label">{mode}</div>
-            <div id="time-left">{time}</div>
-          </div>
-        );
-      }
+  return (
+    <main className="main">
+      <section className="section-center-structure">
+        <div className="message">{stateMode}</div>
+        <div className="">
+          <TimerOutput stateTimer={stateTimer} />
+        </div>
 
-      function timeLeft() {
-        let minutes = stateMinutes < 10 ? "0" + stateMinutes : stateMinutes;
-        let seconds = stateSeconds < 10 ? "0" + stateSeconds : stateSeconds;
-        return minutes + ":" + seconds;
-      }
+        <div className="buttons">
+          <ButtonStartStop
+            setTimer={setTimer}
+            stateTimer={stateTimer}
+            intervalId={intervalId}
+            setIntervalId={setIntervalId}
+          />
 
-    return(
-        <main className="main">
-        <section className="section-center-structure">
-          <div className="message">
-            {stateMode}
-          </div>
-          <div className=""><TimerOutput time={timeLeft()}/></div>
-
-          <div className="buttons">
-            <ButtonStartStop setTimer={setTimer} stateTimer={stateTimer} />
-
-            <ButtonReset
-              setMode={setMode}
-              setBreak={setBreak}
-              setSession={setSession}
-              setMinutes={setMinutes}
-              setSeconds={setSeconds}
-              setTimer={setTimer}
-            />
-          </div>
-        </section>
-      </main>
-    )
-}
+          <ButtonReset
+            setMode={setMode}
+            setBreak={setBreak}
+            setSession={setSession}
+            setMinutes={setMinutes}
+            setSeconds={setSeconds}
+            setTimer={setTimer}
+            stateSession={stateSession}
+            intervalId={intervalId}
+          />
+        </div>
+      </section>
+    </main>
+  );
+};
 
 export default Main;

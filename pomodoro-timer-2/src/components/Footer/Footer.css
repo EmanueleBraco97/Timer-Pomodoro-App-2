@@ -1,7 +1,10 @@
 .footer {
-    display: flex;
-    justify-content: space-evenly;
-    color: white;
-    font-size: 25px;
-    margin-top: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  color: white;
+  font-size: 25px;
+  margin-top: 40px;
+  gap: 20px;
 }
