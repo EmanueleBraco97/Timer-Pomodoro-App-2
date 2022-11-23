@@ -4,11 +4,7 @@ const TimerOutput = ({ stateTimer }) => {
 
   if (seconds < 10) seconds = "0" + seconds;
 
-  return (
-    <time>
-      <div id="time-left">{minutes + ":" + seconds}</div>
-    </time>
-  );
+  return <time>{minutes + ":" + seconds}</time>;
 };
 
 export default TimerOutput;
