@@ -9,6 +9,7 @@ input {
   font-weight: bold;
   padding: 0;
   width: 40px;
+  text-align: center;
 }
 
 .session,

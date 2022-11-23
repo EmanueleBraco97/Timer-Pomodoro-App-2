@@ -9,7 +9,6 @@ const Change = ({
 }) => {
   const handleSessionChange = (e) => {
     setSession(e.target.value);
-    setTimer(e.target.value * 60);
   };
 
   const handleBreakChange = (e) => {
@@ -19,19 +18,19 @@ const Change = ({
   return (
     <>
       <form className="session">
-        <label>Work Session</label>
+        <label htmlFor="session">Work Session</label>
         <input
+          id="session"
           type="number"
           min="1"
           max="60"
           value={stateSession}
           onChange={handleSessionChange}
         ></input>
-      </form>
 
-      <form className="break">
-        <label>Break Session</label>
+        <label htmlFor="break">Break Session</label>
         <input
+          id="break"
           type="number"
           min="1"
           max="30"

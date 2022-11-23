@@ -7,7 +7,7 @@ import Footer from "./Footer/Footer";
 
 const Timer = () => {
   const [stateBreak, setBreak] = useState(5);
-  const [stateSession, setSession] = useState(25);
+  const [stateSession, setSession] = useState(1);
   const [stateTimer, setTimer] = useState(stateSession * 60);
   const [stateMode, setMode] = useState("Session");
 

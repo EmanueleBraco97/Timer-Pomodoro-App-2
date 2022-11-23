@@ -5,9 +5,9 @@ const TimerOutput = ({ stateTimer }) => {
   if (seconds < 10) seconds = "0" + seconds;
 
   return (
-    <div className="timer-output">
+    <time>
       <div id="time-left">{minutes + ":" + seconds}</div>
-    </div>
+    </time>
   );
 };
 

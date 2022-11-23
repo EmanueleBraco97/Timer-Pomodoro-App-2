@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlay, faCircle } from "@fortawesome/free-solid-svg-icons";
+import { faPlay, faPause } from "@fortawesome/free-solid-svg-icons";
 
 import "./Button.css";
 import { useState } from "react";
@@ -13,7 +13,7 @@ const ButtonStop = ({ setTimer, intervalId, setIntervalId }) => {
     setIntervalId(
       setInterval(() => {
         setTimer((prevValue) => prevValue - 1);
-      }, 1000)
+      }, 100)
     );
   };
 
@@ -28,7 +28,7 @@ const ButtonStop = ({ setTimer, intervalId, setIntervalId }) => {
     </button>
   ) : (
     <button className="button-pause" onClick={clickPause}>
-      <FontAwesomeIcon className="button" icon={faCircle} />
+      <FontAwesomeIcon className="button" icon={faPause} />
     </button>
   );
 };
