@@ -1,12 +1,6 @@
 import "./Change.css";
 
-const Change = ({
-  setTimer,
-  setSession,
-  setBreak,
-  stateBreak,
-  stateSession,
-}) => {
+const Change = ({ setSession, setBreak, stateBreak, stateSession }) => {
   const handleSessionChange = (e) => {
     setSession(e.target.value);
   };

@@ -32,19 +32,15 @@ const Timer = () => {
       <Main
         stateMode={stateMode}
         setMode={setMode}
-        setSession={setSession}
         stateTimer={stateTimer}
         setTimer={setTimer}
         stateSession={stateSession}
-        setBreak={setBreak}
       />
       <Footer
-        stateTimer={stateTimer}
         stateBreak={stateBreak}
         setBreak={setBreak}
         stateSession={stateSession}
         setSession={setSession}
-        setTimer={setTimer}
       />
     </div>
   );
